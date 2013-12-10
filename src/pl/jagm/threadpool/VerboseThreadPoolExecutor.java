@@ -6,8 +6,8 @@ import java.util.concurrent.TimeUnit;
 
 public class VerboseThreadPoolExecutor extends ThreadPoolExecutor {
 
-    public VerboseThreadPoolExecutor(int maximumPoolSize) {
-        super(1, maximumPoolSize, 5000, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>(1));
+    public VerboseThreadPoolExecutor(int maximumPoolSize, int queueSize) {
+        super(maximumPoolSize, maximumPoolSize, 5000, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>(queueSize));
     }
 
     @Override
