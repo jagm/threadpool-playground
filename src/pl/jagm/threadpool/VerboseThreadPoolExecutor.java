@@ -36,7 +36,7 @@ public class VerboseThreadPoolExecutor extends ThreadPoolExecutor {
         super.beforeExecute(t, r);
     }
 
-    private void logMetrics(String name) {
+    public void logMetrics(String name) {
         System.out.println(
                 String.format("[%s] [%d/%d] Active: %d, Completed: %d, Task: %d, isShutdown: %s, isTerminated: %s",
                         name,
