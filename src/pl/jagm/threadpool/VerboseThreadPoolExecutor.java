@@ -28,6 +28,7 @@ public class VerboseThreadPoolExecutor extends ThreadPoolExecutor {
     protected void afterExecute(Runnable r, Throwable t) {
         logMetrics("After execute");
         super.afterExecute(r, t);
+        logMetrics("After execute after super");
     }
 
     @Override
@@ -38,7 +39,7 @@ public class VerboseThreadPoolExecutor extends ThreadPoolExecutor {
 
     public void logMetrics(String name) {
         System.out.println(
-                String.format("[%s] [%d/%d] Active: %d, Completed: %d, Task: %d, isShutdown: %s, isTerminated: %s",
+                String.format("[%s] [%d/%d] Active: %d, Completed: %d, Task: %d, isShutdown: %s, isTerminated: %s, queueSize: %d",
                         name,
                         getPoolSize(),
                         getCorePoolSize(),
@@ -46,8 +47,7 @@ public class VerboseThreadPoolExecutor extends ThreadPoolExecutor {
                         getCompletedTaskCount(),
                         getTaskCount(),
                         isShutdown(),
-                        isTerminated()));
+                        isTerminated(),
+                        getQueue().size()));
     }
-
-
 }
