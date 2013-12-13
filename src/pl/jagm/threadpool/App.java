@@ -10,12 +10,13 @@ public class App {
         VerboseThreadPoolExecutor pool = new VerboseThreadPoolExecutor(3, 10);
         pool.logMetrics("App start");
 
-        for (int i = 0; i < 10; ++i) {
+        for (int i = 0; i < 5; ++i) {
             System.out.println("Adding thread #" + i);
             pool.execute(new MyThread(i));
         }
 
         pool.logMetrics("App stop");
+        pool.shutdown();
     }
 
 }
